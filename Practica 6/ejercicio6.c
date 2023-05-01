@@ -9,3 +9,31 @@
  * 
  */
 
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char cadena[100];
+    int cant[26] = {0};
+    int i = 0;
+
+    printf("Cadena de entrada: ");
+    fgets(cadena, 100, stdin);
+
+    // Contar la frecuencia de cada letra del alfabeto
+    for (i = 0; cadena[i] != '\0'; i++) {
+        if (isalpha(cadena[i])) {
+            cant[tolower(cadena[i]) - 'a']++;
+        }
+    }
+
+    printf("Salida: \n");
+    // Imprimir la frecuencia de cada letra
+    for (i = 0; i < 26; i++) {
+        if (cant[i] > 0) {
+            printf("%c ---- %i\n", 'a' + i, cant[i]);
+        }
+    }
+
+    return 0;
+}
